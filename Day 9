@@ -1,0 +1,21 @@
+//Minimize the Heights II
+// User function Template for Java
+
+class Solution {
+    int getMinDiff(int[] arr, int k) {
+        // code here
+        Arrays.sort(arr);
+        
+        int min=arr[0];
+        int max=arr[arr.length-1];
+        int ans=max-min;
+        
+        for (int i=0;i<arr.length-1;i++){
+            int high=Math.max(arr[i]+k,arr[arr.length-1]-k);
+            int low=Math.min(arr[0]+k,arr[i+1]-k);
+            if (low<0) continue;
+            ans=Math.min(ans,high-low);
+        }
+        return ans;
+    }
+}
